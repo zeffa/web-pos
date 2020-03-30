@@ -3,5 +3,76 @@
 {% block title %} Dashboard {% endblock %}
 
 {% block content %}
-product list
-{% endblock content%} 
+<div class="container-fluid">
+    <div class="row">
+        <div class="masonry-item col-md-12">
+            <div class="bgc-white p-20 bd">
+                <ul class="list-group list-group-flush">
+                    {% for product in products %}
+                    <li class="list-group-item">
+                        <div class="row align-items-center">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {{product.product_name }} - {{ product.product_type }}
+                                    </div>
+                                    <div class="col-sm-12">
+                                        {{ product.product_manufacturer }}
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <span class="price-color"><b>Retail Price: </b></span>
+                                            <span class="badge badge-primary badge-pill">KES
+                                                {{ product.retail_price }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="price-color"><b>Wholesale Price: </b></span>
+                                            <span class="badge badge-primary badge-pill">KES
+                                                {{ product.wholesale_price }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="modal fade" role="dialog" id="modalAddStock">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title">Add Stock</h3>
+                                                        <button class="close" type="button" data-dismiss="modal">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>{{product.product_name}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button id="showModal" value="{{product.product_id}}" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modalAddStock">
+                                            <i class="c-white-500 cil-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col"><a class="btn btn-sm btn-primary"><i
+                                                class="c-white-500 cil-cart"></i></a></div>
+                                    <div class="col"><a class="btn btn-sm btn-danger"><i
+                                                class="cil-x"></i></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content%}
+
+{% block javascripts %}
+<script>
+    $('#showModal').on('click', function (event) {
+
+    })
+    </script>
+{% endblock javascripts %}

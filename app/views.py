@@ -2,6 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.http import HttpResponse
+from django.views.generic import ListView
+from .models import Product
 
 @login_required(login_url="login")
 def index(request):
@@ -9,7 +11,18 @@ def index(request):
 
 @login_required(login_url="login")
 def product_list(request):
-    return render(request, 'product_list.html')
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'product_list.html', context = context)
+
+def insert_to_inventory(request, pk):
+    product = Product.objects.get(pk=pk)
+    return render(request, 'add_to_inventory.html', context={'product':product})
+
+class ProductList(ListView):
+    template_name = 'product_list.html'
+    queryset = Product.objects.all()
+    # print(queryset)
 
 @login_required(login_url="login")
 def inventory_list(request):
