@@ -1,0 +1,52 @@
+{% extends "layouts/base-site.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="fade-in">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{% url 'product_list' %}">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="https://placehold.it/150" width="100%"/>
+                        </div>
+                        <div class="card-footer">Product List</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{% url 'inventory_list' %}">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="https://placehold.it/150" width="100%"/>
+                        </div>
+                        <div class="card-footer">Inventory</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{% url 'sales_list' %}">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="https://placehold.it/150" width="100%"/>
+                        </div>
+                        <div class="card-footer">Sales</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{% url 'make_sale' %}">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="https://placehold.it/150" width="100%"/>
+                        </div>
+                        <div class="card-footer">Make Sale</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
